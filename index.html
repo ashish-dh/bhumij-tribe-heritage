@@ -1,0 +1,627 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Archive: Preservation of the Vulnerable Bhumij Tribe</title>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Traditional Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Yatra+One&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --clay-red: #8c3b2b;
+            --soil-dark: #3c2117;
+            --bark-brown: #1e1510;
+            --forest-deep: #0a140c;
+            --forest-mud: #111812;
+            --parchment: #f3ebdb;
+            --parchment-muted: #e2d3b8;
+            --ochre-gold: #c29238;
+            --clay-orange: #a84f33;
+            --border-color: #2e1d16;
+            --card-bg: linear-gradient(145deg, #152419 0%, #0d170f 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--forest-deep);
+            color: var(--parchment);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(rgba(140, 59, 43, 0.15) 1px, transparent 1px),
+                radial-gradient(rgba(194, 146, 56, 0.1) 1px, var(--forest-deep) 1px);
+            background-size: 32px 32px;
+            background-position: 0 0, 16px 16px;
+            overflow-x: hidden;
+        }
+
+        .sohrai-border-strip {
+            background: repeating-linear-gradient(
+                90deg,
+                var(--clay-red) 0px,
+                var(--clay-red) 15px,
+                var(--ochre-gold) 15px,
+                var(--ochre-gold) 30px,
+                var(--bark-brown) 30px,
+                var(--bark-brown) 45px,
+                var(--forest-mud) 45px,
+                var(--forest-mud) 60px
+            );
+            height: 10px;
+            width: 100%;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--parchment);
+        }
+
+        .vernacular-font {
+            font-family: 'Yatra One', cursive, serif;
+        }
+
+        .cinzel-font {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Container Utilities */
+        .max-width-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(10, 20, 12, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--soil-dark);
+            border: 2px solid var(--ochre-gold);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--ochre-gold);
+            font-size: 1.5rem;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .brand-text-primary {
+            font-size: 1.35rem;
+            color: var(--ochre-gold);
+            line-height: 1.1;
+        }
+
+        .brand-text-sub {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--parchment-muted);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--parchment);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s ease;
+            padding: 4px 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--ochre-gold);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: var(--soil-dark);
+            border: 1px solid var(--clay-red);
+            color: var(--parchment);
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* Archive Card Style */
+        .archive-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.75rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .archive-card:hover {
+            border-color: var(--clay-red);
+        }
+
+        /* SECTION HEADINGS */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-tag {
+            color: var(--ochre-gold);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--parchment);
+        }
+
+        .section-divider {
+            width: 70px;
+            height: 4px;
+            background: var(--clay-red);
+            margin: 0.75rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* HERO SECTION */
+        .hero-section {
+            padding: 4rem 0 5rem;
+            border-bottom: 2px solid var(--border-color);
+            text-align: center;
+            background: linear-gradient(180deg, var(--forest-deep) 0%, #0d1a10 100%);
+        }
+
+        .team-badge-hero {
+            display: inline-flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            background: var(--soil-dark);
+            border: 2px solid var(--clay-red);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--parchment);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .team-badge-hero span.highlight {
+            color: var(--ochre-gold);
+        }
+
+        .hero-title {
+            font-size: 2.75rem;
+            line-height: 1.2;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-title span {
+            color: var(--ochre-gold);
+            text-decoration: underline;
+            text-decoration-color: var(--clay-red);
+            text-underline-offset: 8px;
+        }
+
+        .hero-description {
+            font-size: 1rem;
+            color: var(--parchment-muted);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        /* STATS GRID */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            text-align: left;
+            border-left: 4px solid var(--clay-red);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            color: var(--ochre-gold);
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--parchment);
+            margin-top: 0.25rem;
+        }
+
+        .stat-subtext {
+            font-size: 0.65rem;
+            color: var(--ochre-gold);
+            margin-top: 0.2rem;
+        }
+
+        /* GRID LAYOUTS */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+        }
+
+        /* GOTRA TAGS */
+        .gotra-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .gotra-item {
+            background: var(--forest-deep);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem;
+            border-radius: 6px;
+        }
+
+        .gotra-title {
+            color: var(--ochre-gold);
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: block;
+        }
+
+        .gotra-desc {
+            font-size: 0.7rem;
+            color: var(--parchment-muted);
+        }
+
+        /* BUTTONS */
+        .btn-primary {
+            background: var(--soil-dark);
+            border: 1px solid var(--clay-red);
+            color: var(--parchment);
+            padding: 0.75rem 1.25rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background: var(--clay-red);
+            border-color: var(--ochre-gold);
+        }
+
+        /* GALLERY & LIGHTBOX */
+        .gallery-card {
+            overflow: hidden;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .gallery-img-container {
+            height: 240px;
+            overflow: hidden;
+            background-color: var(--bark-brown);
+        }
+
+        .gallery-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-card:hover .gallery-img-container img {
+            transform: scale(1.08);
+        }
+
+        .gallery-content {
+            padding: 1.25rem;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 10, 6, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .modal-body {
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 36px;
+            height: 36px;
+            background: var(--soil-dark);
+            border: 1px solid var(--clay-red);
+            color: var(--parchment);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        /* FORM CONTROLS */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--parchment-muted);
+            margin-bottom: 0.35rem;
+        }
+
+        .form-control {
+            width: 100%;
+            background: var(--forest-deep);
+            border: 1px solid var(--border-color);
+            color: var(--parchment);
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--ochre-gold);
+        }
+
+        /* SECTIONS PADDING */
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--bark-brown);
+            padding: 4rem 0 2rem;
+            border-top: 4px solid var(--clay-red);
+            text-align: center;
+        }
+
+        .team-cards-footer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .team-card-small {
+            background: var(--forest-deep);
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        /* RESPONSIVE MEDIA QUERIES */
+        @media (max-width: 900px) {
+            .hero-title { font-size: 2rem; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .mobile-menu-toggle { display: block; }
+            .mobile-nav-active {
+                display: flex !important;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: var(--forest-deep);
+                padding: 1.5rem;
+                border-bottom: 2px solid var(--clay-red);
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sohrai-border-strip"></div>
+
+    <nav>
+        <div class="max-width-container nav-wrapper">
+            <a href="#" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-tree"></i>
+                </div>
+                <div>
+                    <span class="brand-text-primary vernacular-font">भूमिज जनजातीय अभिलेखागार</span>
+                    <span class="brand-text-sub">Bhumij Tribe Preservation Archive</span>
+                </div>
+            </a>
+
+            <button class="mobile-menu-toggle" onclick="toggleMobileNav()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#status">Status & Land</a></li>
+                <li><a href="#history">Rebellions</a></li>
+                <li><a href="#clans">Gotras & Beliefs</a></li>
+                <li><a href="#music">Folk Rhythms</a></li>
+                <li><a href="#photo-archive">Photo Archive</a></li>
+                <li><a href="#contribute">Data Portal</a></li>
+                <li><a href="#team" style="color: var(--ochre-gold);">Project Team</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="max-width-container">
+            
+            <div id="team" class="team-badge-hero">
+                <i class="fa-solid fa-graduation-cap" style="color: var(--ochre-gold);"></i>
+                <span>PROJECT BY:</span>
+                <span class="highlight">Hribhendu Ranjan Keshri (26MA0011)</span> •
+                <span class="highlight">Ashish Kumar (26MA0008)</span> •
+                <span class="highlight">Natansh Parth (26MA0014)</span>
+            </div>
+
+            <h1 class="hero-title">
+                Digital Archive for the Preservation of the <span>Vulnerable Bhumij Tribe</span>
+            </h1>
+
+            <p class="hero-description">
+                A digital humanities repository safeguarding the endangered Austroasiatic Munda cultural heritage, forest land tenures, oral traditions, sacred <strong>Jaher Than</strong> groves, and the <strong>Ol Onol</strong> script invented by Mahendra Nath Sardar.
+            </p>
+
+            <div class="stats-grid">
+                <div class="archive-card stat-card">
+                    <div class="stat-number vernacular-font">~9,00,000+</div>
+                    <div class="stat-label">Total Population</div>
+                    <div class="stat-subtext">JH, WB, OD, AS, TRIPURA</div>
+                </div>
+
+                <div class="archive-card stat-card" style="border-left-color: var(--ochre-gold);">
+                    <div class="stat-number cinzel-font">Ol Onol</div>
+                    <div class="stat-label">Native Script</div>
+                    <div class="stat-subtext">Created by M. N. Sardar</div>
+                </div>
+
+                <div class="archive-card stat-card">
+                    <div class="stat-number vernacular-font">Chuar '1766</div>
+                    <div class="stat-label">Historic Revolt</div>
+                    <div class="stat-subtext">Anti-Colonial Resistance</div>
+                </div>
+
+                <div class="archive-card stat-card" style="border-left-color: var(--ochre-gold);">
+                    <div class="stat-number cinzel-font">Jaher Than</div>
+                    <div class="stat-label">Sacred Sal Grove</div>
+                    <div class="stat-subtext">Nature Sanctuary Worship</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="status">
+        <div class="max-width-container">
+            <div class="section-header">
+                <span class="section-tag">Demographic & Vulnerability Overview</span>
+                <h2 class="section-title">Current Status, Population & Conservation Focus</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="grid-3" style="margin-bottom: 2rem;">
+                <div class="archive-card" style="border-top: 3px solid var(--clay-red);">
+                    <div style="font-size: 1.5rem; color: var(--ochre-gold); margin-bottom: 0.75rem;">
+                        <i class="fa-solid fa-landmark"></i>
+                    </div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Constitutional Status</h3>
+                    <p style="font-size: 0.8rem; color: var(--parchment-muted);">
+                        Classified as a <strong>Scheduled Tribe (ST)</strong> in Jharkhand, West Bengal, Odisha, and Tripura. In Assam tea estate belts, community councils press for constitutional ST recognition.
+                    </p>
+                </div>
+
+                <div class="archive-card" style="border-top: 3px solid var(--ochre-gold);">
+                    <div style="font-size: 1.5rem; color: var(--ochre-gold); margin-bottom: 0.75rem;">
+                        <i class="fa-solid fa-earth-asia"></i>
+                    </div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Regional Concentration</h3>
+                    <p style="font-size: 0.8rem; color: var(--parchment-muted);">
+                        Concentrated in <strong>East & West Singhbhum (Dhalbhum, Potka), Seraikela, Manbhum, and Ranchi</strong> in Jharkhand; Jhargram, Purulia, Bankura in WB; and Mayurbhanj in Odisha.
+                    </p>
+                </div>
+
+                <div class="archive-card" style="border-top: 3px solid var(--clay-red);">
+                    <div style="font-size: 1.5rem; color: var(--ochre-gold); margin-bottom: 0.75rem;">
+                        <i class="fa-solid fa-book-bo
